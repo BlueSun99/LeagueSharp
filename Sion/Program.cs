@@ -80,7 +80,7 @@ namespace Sion
             Config.AddToMainMenu();
 
             Game.PrintChat("Sion Loaded!");
-            Game.OnGameUpdate += Game_OnGameUpdate;
+            Game.OnUpdate += Game_OnUpdate;
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
             Drawing.OnDraw += Drawing_OnDraw;
             Obj_AI_Base.OnProcessSpellCast += ObjAiHeroOnOnProcessSpellCast;
@@ -107,7 +107,7 @@ namespace Sion
                 args.Process = false;
         }
 
-        private static void Game_OnGameUpdate(EventArgs args)
+        private static void Game_OnUpdate(EventArgs args)
         {
             //Casting R
             if (ObjectManager.Player.HasBuff("SionR"))

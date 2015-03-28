@@ -39,12 +39,12 @@ namespace ToolsForDevelopers
 
             config.AddToMainMenu();
 
-            Game.OnGameUpdate += Game_OnGameUpdate;
-            Game.OnGameSendPacket += Game_OnGameSendPacket;
+            Game.OnUpdate += Game_OnUpdate;
+            Game.OnSendPacket += Game_OnSendPacket;
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
         }
 
-        public static void Game_OnGameUpdate(EventArgs args)
+        public static void Game_OnUpdate(EventArgs args)
         {
             if (config.Item("MoveToPos").GetValue<bool>())
             {
@@ -52,7 +52,7 @@ namespace ToolsForDevelopers
             }
         }
 
-        public static void Game_OnGameSendPacket(GamePacketEventArgs args)
+        public static void Game_OnSendPacket(GamePacketEventArgs args)
         {
             if (config.Item("SendPacket").GetValue<bool>())
             {
