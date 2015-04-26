@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using LeagueSharp;
 using LeagueSharp.Common;
+using SharpDX;
 using ItemData = LeagueSharp.Common.Data.ItemData;
 
 namespace ToolsForDevelopers
@@ -39,6 +40,7 @@ namespace ToolsForDevelopers
 
             config.AddItem(new MenuItem("GetUnitVector", "Get Unit Vector").SetValue(false));
             config.AddItem(new MenuItem("GetMouseVector", "Get Mouse Vector").SetValue(false));
+            config.AddItem(new MenuItem("WIP", "WIP").SetValue(false));
 
             config.AddToMainMenu();
 
@@ -57,6 +59,11 @@ namespace ToolsForDevelopers
             if (config.Item("GetMouseVector").GetValue<bool>())
             {
                 Game.PrintChat(Game.CursorPos.ToString());
+            }
+
+            if (config.Item("WIP").GetValue<bool>() && ObjectManager.Player.Team == GameObjectTeam.Chaos)
+            {
+                ObjectManager.Player.IssueOrder(GameObjectOrder.MoveTo, new Vector3(396f, 462f, 182.1325f));
             }
         }
 
