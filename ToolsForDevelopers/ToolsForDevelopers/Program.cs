@@ -19,6 +19,8 @@ namespace ToolsForDevelopers
         private static readonly string fileLoggingSend = "LogSend.txt";
         private static readonly string fileLoggingReceive = "LogReceive.txt";
 
+        private static GamePacket tempData;
+
         static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
@@ -41,7 +43,7 @@ namespace ToolsForDevelopers
 
             Game.OnUpdate += Game_OnUpdate;
             Game.OnSendPacket += Game_OnSendPacket;
-            Game.OnGameProcessPacket += Game_OnGameProcessPacket;
+            Game.OnProcessPacket += Game_OnProcessPacket;
         }
 
         public static void Game_OnUpdate(EventArgs args)
@@ -64,15 +66,15 @@ namespace ToolsForDevelopers
                     Console.WriteLine(gPacket.Dump());
                 }
 
-                if (Config.LeagueSharpDirectory != null &&
+                /*if (Config.LeagueSharpDirectory != null &&
                     Directory.Exists(Config.LeagueSharpDirectory))
                 {
                     File.AppendAllText(Path.Combine(Config.LeagueSharpDirectory, fileLoggingSend), gPacket.Dump() + Environment.NewLine);
-                }
+                }*/
             }
         }
 
-        public static void Game_OnGameProcessPacket(GamePacketEventArgs args)
+        public static void Game_OnProcessPacket(GamePacketEventArgs args)
         {
             if (config.Item("RecvPacket").GetValue<bool>())
             {
@@ -87,11 +89,11 @@ namespace ToolsForDevelopers
                     Console.WriteLine(gPacket.Dump());
                 }
 
-                if (Config.LeagueSharpDirectory != null &&
+                /*if (Config.LeagueSharpDirectory != null &&
                     Directory.Exists(Config.LeagueSharpDirectory))
                 {
                     File.AppendAllText(Path.Combine(Config.LeagueSharpDirectory, fileLoggingReceive), gPacket.Dump() + Environment.NewLine);
-                }
+                }*/
             }
         }
     }

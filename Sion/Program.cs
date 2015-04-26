@@ -81,7 +81,7 @@ namespace Sion
 
             Game.PrintChat("Sion Loaded!");
             Game.OnUpdate += Game_OnUpdate;
-            Game.OnGameProcessPacket += Game_OnGameProcessPacket;
+            Game.OnProcessPacket += Game_OnProcessPacket;
             Drawing.OnDraw += Drawing_OnDraw;
             Obj_AI_Base.OnProcessSpellCast += ObjAiHeroOnOnProcessSpellCast;
         }
@@ -100,7 +100,7 @@ namespace Sion
             Render.Circle.DrawCircle(ObjectManager.Player.Position, Q.Range, System.Drawing.Color.White);
         }
 
-        private static void Game_OnGameProcessPacket(GamePacketEventArgs args)
+        private static void Game_OnProcessPacket(GamePacketEventArgs args)
         {
             if (Config.Item("AntiCamLock").GetValue<bool>() && args.PacketData[0] == 0xD5
                     && args.PacketData[9] == 0x2E && args.PacketData[10] == 0x2E)
