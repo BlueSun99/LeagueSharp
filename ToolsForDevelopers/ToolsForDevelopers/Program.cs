@@ -61,7 +61,7 @@ namespace ToolsForDevelopers
                 Game.PrintChat(Game.CursorPos.ToString());
             }
 
-            if (config.Item("WIP").GetValue<bool>() && ObjectManager.Player.Team == GameObjectTeam.Chaos)
+            if (config.Item("WIP").GetValue<bool>() && ObjectManager.Player.Team == GameObjectTeam.Order)
             {
                 ObjectManager.Player.IssueOrder(GameObjectOrder.MoveTo, new Vector3(396f, 462f, 182.1325f));
             }
