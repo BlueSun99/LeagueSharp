@@ -37,7 +37,8 @@ namespace ToolsForDevelopers
             config.AddItem(new MenuItem("RecvPacket_Console", " ^ Console Write?").SetValue(false));
             config.AddItem(new MenuItem("RecvPacket_OnlyMine", " ^ Only My Network Id").SetValue(false));
 
-            config.AddItem(new MenuItem("MoveToPos", "Move To Position").SetValue(false));
+            config.AddItem(new MenuItem("GetUnitVector", "Get Unit Vector").SetValue(false));
+            config.AddItem(new MenuItem("GetMouseVector", "Get Mouse Vector").SetValue(false));
 
             config.AddToMainMenu();
 
@@ -48,7 +49,12 @@ namespace ToolsForDevelopers
 
         public static void Game_OnUpdate(EventArgs args)
         {
-            if (config.Item("MoveToPos").GetValue<bool>())
+            if (config.Item("GetUnitVector").GetValue<bool>())
+            {
+                Game.PrintChat(ObjectManager.Player.Position.ToString());
+            }
+			
+            if (config.Item("GetMouseVector").GetValue<bool>())
             {
                 Game.PrintChat(Game.CursorPos.ToString());
             }
